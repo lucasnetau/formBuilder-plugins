@@ -1,7 +1,14 @@
+"use strict";
 /**
- * Custom Select Control
- **/
-
+ * This file is part of the formBuilder plugins repository.
+ * https://github.com/lucasnetau/formBuilder-plugins
+ *
+ * (c) James Lucas <james@lucas.net.au>
+ *
+ * @license MIT
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 if (!window.fbControls) { window.fbControls = []; }
 window.fbControls.push(function(controlClass, allControlClasses) {
     "use strict";
@@ -39,32 +46,56 @@ window.fbControls.push(function(controlClass, allControlClasses) {
         build() {
             this.config.type = 'select'; //Required for the parent class to render correctly
 
-            if (this.preview) {
-                // When in preview (formBuilder) we may be continuously rebuilt, best to put a placeholder in
-                this.config.values = [
-                    {
-                        "label": "Options will be inserted automatically in formRender",
-                        "value": "preview",
-                        "selected": false
-                    },
-                ];
-            } else {
-                /** Simulate fetch() to retrieve fields from API */
-                this.config.values = [
-                    {
-                        "label": "Sun",
-                        "value": "sun",
-                        "selected": false
-                    },
-                    {
-                        "label": "Moon",
-                        "value": "moon",
-                        "selected": false
-                    },
-                ];
-            }
+            this.config.values = [
+                {
+                    "label": "Options will be inserted automatically in formRender",
+                    "value": "preview",
+                    "selected": false
+                },
+            ];
 
             return super.build();
+        }
+
+        /**
+         * Load the select values from an API in the onRender() method
+         */
+        onRender() {
+            if (this.preview) {
+                return; // When in preview (formBuilder) we may be continuously rebuilt, best to leave a placeholder in
+            }
+
+            const _this = this;
+            const placeholder = $('option[value="preview"]', this.dom)[0];
+            this.dom.removeChild(placeholder);
+
+            /** Simulate fetch() to retrieve fields from API */
+            new Promise((resolve, reject) => {
+                resolve({
+                    options: [
+                        {
+                            "label": "Sun",
+                            "value": "sun",
+                            "selected": false
+                        },
+                        {
+                            "label": "Moon",
+                            "value": "moon",
+                            "selected": false
+                        },
+                    ]
+                })
+            }).then(res => {
+                res.options.forEach(option => {
+                    const newOpt = placeholder.cloneNode();
+                    Object.assign(newOpt, {
+                        value: option.value,
+                        checked: option.selected,
+                        textContent: option.label
+                    });
+                    this.dom.appendChild(newOpt)
+                });
+            });
         }
     }
 
