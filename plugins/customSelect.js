@@ -68,6 +68,7 @@ window.fbControls.push(function(controlClass, allControlClasses) {
             const _this = this;
             const placeholder = $('option[value="preview"]', this.dom)[0];
             this.dom.removeChild(placeholder);
+            const idTemplate = placeholder.id.slice(0, -1);
 
             /** Simulate fetch() to retrieve fields from API */
             new Promise((resolve, reject) => {
@@ -86,9 +87,10 @@ window.fbControls.push(function(controlClass, allControlClasses) {
                     ]
                 })
             }).then(res => {
-                res.options.forEach(option => {
+                res.options.forEach((option, index) => {
                     const newOpt = placeholder.cloneNode();
                     Object.assign(newOpt, {
+                        id: `${idTemplate}${index}`,
                         value: option.value,
                         checked: option.selected,
                         textContent: option.label
