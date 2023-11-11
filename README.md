@@ -1,5 +1,5 @@
 # FormBuilder Plugins
-A set of plugins that can be used with [kevinchappell/formBuilder](https://github.com/kevinchappell/formBuilder)
+A useful set of plugins that can be used with [kevinchappell/formBuilder](https://github.com/kevinchappell/formBuilder) along with how-tos and examples.
 
 ## Available Plugins
 
@@ -7,7 +7,7 @@ A set of plugins that can be used with [kevinchappell/formBuilder](https://githu
 |-----------------------------------------------------------------|----------------------------------------------------------|
 | [Example](plugins/example.js)                                   | Full example template for a plugin                       |
 | [Media](https://github.com/lucasnetau/formBuilder-plugin-media) | Embed Video/Images/Audio into a form                     |
-| [Horizontal Rule](plugins/hr.js)                                | Horizontal Rule element                                  |
+| [Horizontal Rule](docs/hr.md)                                   | Horizontal Rule element                                  |
 | [Data bound custom select](plugins/customSelect.js)             | Example extension of select control with dynamic options |
 | Signature                                                       | Signature pad (Needs Sponsor)                            |
 
