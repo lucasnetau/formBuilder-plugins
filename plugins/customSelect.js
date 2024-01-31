@@ -8,6 +8,16 @@
  * @license MIT
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
+ *
+ * A data provider needs to be registered via the control config option for formRender
+ * ```
+ * var renderOpts = {
+ *    controlConfig: {
+ *      'customSelect': {
+ *         provider: config => {}
+ *       }
+ *    }
+ * };
  */
 if (!window.fbControls) { window.fbControls = []; }
 window.fbControls.push(function(controlClass, allControlClasses) {
@@ -70,23 +80,10 @@ window.fbControls.push(function(controlClass, allControlClasses) {
             this.dom.removeChild(placeholder);
             const idTemplate = placeholder.id.slice(0, -1);
 
+            const dataProvider = this.classConfig.provider ?? (() => new Promise((resolve, reject) => { reject('dataProvider was not configured for custom select')}))
+
             /** Simulate fetch() to retrieve fields from API */
-            new Promise((resolve, reject) => {
-                resolve({
-                    options: [
-                        {
-                            "label": "Sun",
-                            "value": "sun",
-                            "selected": false
-                        },
-                        {
-                            "label": "Moon",
-                            "value": "moon",
-                            "selected": false
-                        },
-                    ]
-                })
-            }).then(res => {
+            dataProvider(this.config).then(res => {
                 res.options.forEach((option, index) => {
                     const newOpt = placeholder.cloneNode();
                     Object.assign(newOpt, {
@@ -97,6 +94,8 @@ window.fbControls.push(function(controlClass, allControlClasses) {
                     });
                     this.dom.appendChild(newOpt)
                 });
+            }).catch(reason => {
+                console.error(reason)
             });
         }
     }

@@ -3,13 +3,14 @@ A useful set of plugins that can be used with [kevinchappell/formBuilder](https:
 
 ## Available Plugins
 
-| Plugin Name                                                     | Description                                              |
-|-----------------------------------------------------------------|----------------------------------------------------------|
-| [Example](plugins/example.js)                                   | Full example template for a plugin                       |
-| [Media](https://github.com/lucasnetau/formBuilder-plugin-media) | Embed Video/Images/Audio into a form                     |
-| [Horizontal Rule](docs/hr.md)                                   | Horizontal Rule element                                  |
-| [Data bound custom select](plugins/customSelect.js)             | Example extension of select control with dynamic options |
-| Signature                                                       | Signature pad (Needs Sponsor)                            |
+| Plugin Name                                                     | Description                                               |
+|-----------------------------------------------------------------|-----------------------------------------------------------|
+| [Example](plugins/example.js)                                   | Full example template for a plugin                        |
+| [Media](https://github.com/lucasnetau/formBuilder-plugin-media) | Embed Video/Images/Audio into a form                      |
+| [Horizontal Rule](docs/hr.md)                                   | Horizontal Rule element                                   |
+| [Data bound custom select](docs/customSelect.md)                | Select control with dynamic options from Promise provider |
+| Sections                                                        | Group controls into dynamic sections (Needs Sponser)      |
+| Signature                                                       | Signature pad (Needs Sponsor)                             |
 
 ## Looking for something else?
 
