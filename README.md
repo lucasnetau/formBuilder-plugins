@@ -9,6 +9,7 @@ A useful set of plugins that can be used with [kevinchappell/formBuilder](https:
 | [Media](https://github.com/lucasnetau/formBuilder-plugin-media) | Embed Video/Images/Audio into a form                      |
 | [Horizontal Rule](docs/hr.md)                                   | Horizontal Rule element                                   |
 | [Data bound custom select](docs/customSelect.md)                | Select control with dynamic options from Promise provider |
+| [Tags](plugins/tagger.js)                                       | Tag input control based on [Tagger.js](https://github.com/jcubic/tagger)                  |
 | Sections                                                        | Group controls into dynamic sections (Needs Sponser)      |
 | Signature                                                       | Signature pad (Needs Sponsor)                             |
 
