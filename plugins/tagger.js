@@ -51,8 +51,8 @@ window.fbControls.push(function(controlClass) {
         }
 
         configure() {
-            this.js = 'https://githubraw.com/jcubic/tagger/master/tagger.js';
-            this.css = 'https://githubraw.com/jcubic/tagger/master/tagger.css';
+            this.js = 'https://cdn.jsdelivr.net/gh/jcubic/tagger/tagger.js';
+            this.css = 'https://cdn.jsdelivr.net/gh/jcubic/tagger/tagger.css';
         }
 
         /**
